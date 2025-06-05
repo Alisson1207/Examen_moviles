@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Foro de Noticias</ion-title>
+    <ion-buttons slot="end">
+      <ion-item lines="none" class="header-user-info" detail="false">
+        <ion-avatar slot="start">
+          <img [src]="userPhoto || 'https://i.pravatar.cc/150?img=10'" alt="Avatar" />
+        </ion-avatar>
+        <ion-label class="ion-text-wrap">
+          <h5 style="margin: 0;">{{ userName }}</h5>
+        </ion-label>
+        <ion-button (click)="logout()" fill="outline" size="small"style="margin-left: 8px;">
+          Cerrar sesión
+        </ion-button>
+      </ion-item>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="forum-content">
+  <ion-item>
+    <ion-textarea
+      rows="4"
+      placeholder="Escribe tu noticia aquí..."
+      [(ngModel)]="newsText"
+      maxlength="500"
+      autofocus
+    ></ion-textarea>
+  </ion-item>
+
+  <ion-button expand="block" (click)="publishNews()" [disabled]="!newsText.trim()">
+    {{ editMode ? 'Actualizar noticia' : 'Publicar noticia' }}
+  </ion-button>
+
+  <ion-list>
+    <ion-item *ngFor="let news of newsList" lines="none">
+      <ion-avatar slot="start">
+        <img [src]="news.userPhoto || 'https://i.pravatar.cc/150?img=10'" />
+      </ion-avatar>
+      <ion-label>
+        <h3>{{ news.userName }}</h3>
+        <p>{{ news.content }}</p>
+        <div *ngIf="news.location">
+          📍 <a [href]="news.location" target="_blank" rel="noopener noreferrer">Ver ubicación</a>
+        </div>
+        <small>{{ news.createdAt | date:'short' }}</small>
+      </ion-label>
+        <ion-buttons slot="end" *ngIf="news.userId === userId">
+        <ion-button fill="clear" size="small" (click)="editNews(news)">Editar</ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+</ion-content>

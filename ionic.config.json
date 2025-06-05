@@ -1,0 +1,7 @@
+{
+  "name": "loginchatAppWHS",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

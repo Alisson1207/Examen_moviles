@@ -1,0 +1,24 @@
+/* Mantén tus estilos actuales, son válidos para la lista también */
+ion-label {
+  color: black !important;
+}
+
+.chat-content {
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-top: 16px;
+  --padding-bottom: 16px;
+  overflow-y: auto;
+}
+
+/* Puedes personalizar el estilo de las noticias si quieres */
+ion-item {
+  margin-bottom: 8px;
+  border-radius: 8px;
+}
+
+/* Imagen redonda y borde */
+ion-avatar img {
+  border-radius: 50%;
+  border: 2px solid #1976d2;
+}
